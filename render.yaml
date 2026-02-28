@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: minecraft-tools
+    env: node
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false # Будет запрошено при деплое
+      - key: SESSION_SECRET
+        generateValue: true # Render сгенерирует случайное значение

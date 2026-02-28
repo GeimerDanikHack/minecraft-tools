@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "name": "Карты и поиск по сиду",
+      "icon": "🗺️",
+      "tools": [
+        {
+          "name": "Chunk Base",
+          "description": "Самый популярный сайт. Показывает биомы, деревни, крепости, чанки со слизнями, затерянные города по вашему сиду.",
+          "url": "https://www.chunkbase.com"
+        },
+        {
+          "name": "Seed Map",
+          "description": "Альтернативный инструмент с удобным интерфейсом. Доступен и как сайт, и как мобильное приложение.",
+          "url": "https://www.seedmap.org"
+        }
+      ]
+    },
+    {
+      "name": "Строительство и планирование",
+      "icon": "🛠️",
+      "tools": [
+        {
+          "name": "Plotz / Minecraft Shapes",
+          "description": "Генерация сфер, эллипсоидов, пирамид и кругов. Просто вводите радиус, и сайт показывает, какие блоки ставить.",
+          "url": "https://www.plotz.co.uk"
+        },
+        {
+          "name": "Minecraft Tools",
+          "description": "Портал с генераторами: для плоских миров, зелий, фейерверков и зачарованных книг.",
+          "url": "https://www.minecraft.tools"
+        }
+      ]
+    },
+    {
+      "name": "Генераторы команд и текста",
+      "icon": "📝",
+      "tools": [
+        {
+          "name": "Misode",
+          "description": "Мощнейший генератор датапаков, функций, продвинутых команд и структур. Для создания карт и мини-игр.",
+          "url": "https://misode.github.io"
+        },
+        {
+          "name": "GamerGeeks",
+          "description": "Генератор команд /give, /summon и JSON текста для красивых подписей к предметам.",
+          "url": "https://www.gamergeeks.net/apps/minecraft"
+        }
+      ]
+    },
+    {
+      "name": "Ресурсы для творчества",
+      "icon": "🎨",
+      "tools": [
+        {
+          "name": "NameMC",
+          "description": "База скинов и плащей. Можно посмотреть скин в 3D и проверить, свободен ли никнейм.",
+          "url": "https://namemc.com"
+        },
+        {
+          "name": "Minecraft Heads",
+          "description": "Коллекция готовых голов (player heads) для строительства. Есть команды для получения.",
+          "url": "https://www.minecraft-heads.com"
+        }
+      ]
+    },
+    {
+      "name": "Специализированные утилиты",
+      "icon": "⚙️",
+      "tools": [
+        {
+          "name": "Конвертер координат",
+          "description": "Простой конвертер координат между Верхним миром и Адом.",
+          "url": "https://www.minecraft.tools/en/coordinates.php"
+        },
+        {
+          "name": "SimpleWebsite [Plugin]",
+          "description": "Плагин, позволяющий хостить сайт прямо на сервере Minecraft. Поддержка HTML, CSS, JS и PlaceholderAPI.",
+          "url": "https://www.spigotmc.org/resources/simplewebsite-free.112766/"
+        }
+      ]
+    }
+  ]
+}

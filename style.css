@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a2e;
+    color: #fff;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    text-align: center;
+    padding: 3rem 1rem;
+    border-bottom: 3px solid #e94560;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #e94560;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.category {
+    margin-bottom: 3rem;
+}
+
+.category h2 {
+    color: #e94560;
+    border-left: 5px solid #e94560;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.tool-card {
+    background: #16213e;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #0f3460;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(233, 69, 96, 0.2);
+}
+
+.tool-card h3 {
+    color: #e94560;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.tool-card p {
+    color: #ccc;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+}
+
+.btn {
+    display: inline-block;
+    background: #e94560;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ff6b8b;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #0f3460;
+    margin-top: 2rem;
+    border-top: 1px solid #e94560;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+}
