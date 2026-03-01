@@ -209,3 +209,15 @@ app.listen(port, '0.0.0.0', () => {
     console.log(`🔐 Админ-панель: http://localhost:${port}/admin`);
     console.log(`👤 Логин: ${process.env.ADMIN_USERNAME || 'admin'}`);
 });
+const { getServerStatus } = require('./api/server-status');
+
+app.get('/api/server-status', async (req, res) => {
+    const serverIp = req.query.ip || 'localhost'; // IP вашего сервера
+    const status = await getServerStatus(serverIp, 25565);
+    res.json(status);
+});
+
+
+
+
+

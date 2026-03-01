@@ -1,339 +1,121 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Tools Hub | Node.js Edition</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a2e;
-            color: #fff;
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #16213e, #0f3460);
-            text-align: center;
-            padding: 3rem 1rem;
-            border-bottom: 3px solid #e94560;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #e94560;
-        }
-        
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        .search-section {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        #searchInput {
-            padding: 15px;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 30px;
-            border: none;
-            background: #16213e;
-            color: white;
-            border: 2px solid #e94560;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-        
-        #searchInput:focus {
-            box-shadow: 0 0 15px #e94560;
-            transform: scale(1.02);
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-card {
-            background: #16213e;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            border-left: 4px solid #e94560;
-            min-width: 150px;
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #e94560;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .category {
-            margin-bottom: 3rem;
-        }
-        
-        .category h2 {
-            color: #e94560;
-            border-left: 5px solid #e94560;
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .tool-card {
-            background: #16213e;
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #0f3460;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.2);
-        }
-        
-        .tool-card h3 {
-            color: #e94560;
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
-        
-        .tool-card p {
-            color: #ccc;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #e94560;
-            color: white;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .btn:hover {
-            background: #ff6b8b;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            font-size: 1.2rem;
-            color: #e94560;
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            font-size: 1.2rem;
-            color: #e94560;
-            grid-column: 1 / -1;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #0f3460;
-            margin-top: 2rem;
-            border-top: 1px solid #e94560;
-        }
-        
-        .version-badge {
-            display: inline-block;
-            background: #e94560;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-left: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            #searchInput {
-                width: 95%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>🧰 Все инструменты для майнкрафтера</h1>
-        <p>Собрано специально для моего сервера</p>
-        <span class="version-badge">Node.js Edition</span>
-    </header>
+<!-- Блок статуса сервера -->
+<div class="server-status-section">
+    <h2>🎮 Статус моего сервера</h2>
+    <div id="serverStatus" class="status-card">
+        <div class="loading">Загрузка статуса...</div>
+    </div>
+</div>
 
-    <main>
-        <div class="search-section">
-            <input type="text" id="searchInput" placeholder="🔍 Поиск инструментов..." autocomplete="off">
-        </div>
+<style>
+.server-status-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #16213e;
+    border-radius: 10px;
+    border: 1px solid #0f3460;
+}
 
-        <div class="stats-container" id="statsContainer">
-            <div class="stat-card">
-                <div class="stat-value">...</div>
-                <div class="stat-label">Всего инструментов</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">...</div>
-                <div class="stat-label">Категорий</div>
-            </div>
-        </div>
+.status-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+}
 
-        <div id="categoriesContainer">
-            <div class="loading">Загрузка инструментов...</div>
-        </div>
-    </main>
+.status-online {
+    color: #4caf50;
+    font-size: 1.2rem;
+}
 
-    <footer>
-        <p>© 2025 | Локальный справочник инструментов на Node.js</p>
-        <p style="font-size: 0.8rem; opacity: 0.6;">API доступно по адресу <code>/api/tools</code></p>
-    </footer>
+.status-offline {
+    color: #f44336;
+    font-size: 1.2rem;
+}
 
-    <script>
-        // Загружаем данные при загрузке страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            loadTools();
-            loadStats();
-            
-            // Поиск при вводе
-            const searchInput = document.getElementById('searchInput');
-            let timeoutId;
-            
-            searchInput.addEventListener('input', () => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    const query = searchInput.value.trim();
-                    if (query.length > 0) {
-                        searchTools(query);
-                    } else {
-                        loadTools();
-                    }
-                }, 300); // Задержка 300мс после остановки печати
-            });
-        });
+.player-count {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e94560;
+}
+
+.server-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.info-item {
+    text-align: center;
+    padding: 1rem;
+    background: #1a1a2e;
+    border-radius: 8px;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.info-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e94560;
+}
+</style>
+
+<script>
+// Добавьте этот код в ваш существующий JavaScript
+async function loadServerStatus() {
+    try {
+        // Замените НА_АДРЕС_ВАШЕГО_СЕРВЕРА на реальный IP вашего Minecraft сервера
+        const response = await fetch('https://api.mcsrvstat.us/2/НА_АДРЕС_ВАШЕГО_СЕРВЕРА');
+        const data = await response.json();
         
-        async function loadTools() {
-            try {
-                const response = await fetch('/api/tools');
-                const data = await response.json();
-                displayTools(data.categories);
-            } catch (error) {
-                console.error('Ошибка загрузки:', error);
-                document.getElementById('categoriesContainer').innerHTML = 
-                    '<div class="no-results">❌ Ошибка загрузки данных</div>';
-            }
-        }
+        const statusDiv = document.getElementById('serverStatus');
         
-        async function searchTools(query) {
-            try {
-                const response = await fetch(`/api/tools/search?q=${encodeURIComponent(query)}`);
-                const data = await response.json();
-                displayTools(data.categories);
-            } catch (error) {
-                console.error('Ошибка поиска:', error);
-            }
-        }
-        
-        async function loadStats() {
-            try {
-                const response = await fetch('/api/stats');
-                const stats = await response.json();
-                
-                document.getElementById('statsContainer').innerHTML = `
-                    <div class="stat-card">
-                        <div class="stat-value">${stats.totalTools}</div>
-                        <div class="stat-label">Всего инструментов</div>
+        if (data.online) {
+            statusDiv.innerHTML = `
+                <div class="status-online">✅ Сервер онлайн</div>
+                <div class="server-info">
+                    <div class="info-item">
+                        <div class="info-label">Игроки онлайн</div>
+                        <div class="info-value">${data.players.online}/${data.players.max}</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value">${stats.totalCategories}</div>
-                        <div class="stat-label">Категорий</div>
+                    <div class="info-item">
+                        <div class="info-label">Версия</div>
+                        <div class="info-value">${data.version || 'Неизвестно'}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">MOTD</div>
+                        <div class="info-value">${data.motd?.clean?.[0] || 'Нет'}</div>
+                    </div>
+                </div>
+            `;
+            
+            // Если есть список игроков, показываем его
+            if (data.players.list && data.players.list.length > 0) {
+                statusDiv.innerHTML += `
+                    <div style="margin-top: 1rem; padding: 1rem; background: #1a1a2e; border-radius: 8px;">
+                        <div class="info-label">Игроки онлайн:</div>
+                        <div>${data.players.list.join(', ')}</div>
                     </div>
                 `;
-            } catch (error) {
-                console.error('Ошибка загрузки статистики:', error);
             }
+        } else {
+            statusDiv.innerHTML = '<div class="status-offline">❌ Сервер оффлайн</div>';
         }
-        
-        function displayTools(categories) {
-            const container = document.getElementById('categoriesContainer');
-            
-            if (!categories || categories.length === 0) {
-                container.innerHTML = '<div class="no-results">🔍 Ничего не найдено</div>';
-                return;
-            }
-            
-            let html = '';
-            
-            categories.forEach(category => {
-                html += `
-                    <section class="category">
-                        <h2>${category.icon || '📌'} ${category.name}</h2>
-                        <div class="tools-grid">
-                `;
-                
-                category.tools.forEach(tool => {
-                    html += `
-                        <div class="tool-card">
-                            <h3>${tool.name}</h3>
-                            <p>${tool.description}</p>
-                            <a href="${tool.url}" target="_blank" class="btn">Перейти →</a>
-                        </div>
-                    `;
-                });
-                
-                html += `
-                        </div>
-                    </section>
-                `;
-            });
-            
-            container.innerHTML = html;
-        }
-    </script>
-</body>
-</html>
+    } catch (error) {
+        console.error('Ошибка загрузки статуса:', error);
+        document.getElementById('serverStatus').innerHTML = 
+            '<div class="status-offline">❌ Не удалось получить статус</div>';
+    }
+}
+
+// Загружаем статус при загрузке страницы и каждые 30 секунд
+document.addEventListener('DOMContentLoaded', () => {
+    loadServerStatus();
+    setInterval(loadServerStatus, 30000); // Обновляем каждые 30 секунд
+});
+</script>
