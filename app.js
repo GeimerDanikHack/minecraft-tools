@@ -222,7 +222,7 @@ const { getServerStatus } = require('./api/server-status');
 // Добавьте этот эндпоинт (где-то после других app.get)
 app.get('/api/server-status', async (req, res) => {
     // Здесь укажите IP вашего Minecraft сервера
-    const serverIp = req.query.ip || 'play.aternos.org'; // ЗАМЕНИТЕ НА СВОЙ IP
+    const serverIp = req.query.ip || '192.168.100.231:25565'; // ЗАМЕНИТЕ НА СВОЙ IP
     const status = await getServerStatus(serverIp, 25565);
     res.json(status);
 });
